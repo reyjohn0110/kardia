@@ -1,23 +1,58 @@
 ﻿using Login.Models;
 using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Linq;
+
 using Xamarin.Forms;
 
 namespace Login.ViewModels
 {
     public class ViewModel_SearchDoctor : ViewModelBase
     {
+        #region vars
+        List<Model_Location> _locationBacker = new List<Model_Location>();
+        List<Model_Specialization> _specializationBacker = new List<Model_Specialization>();
+        List<Model_DoctorData> _doctorsBacker = new List<Model_DoctorData>();
+        #endregion
 
         #region properties
-        
+        public ObservableCollection<Model_Location> Location { get; set; } = new ObservableCollection<Model_Location>();
+        public ObservableCollection<Model_Specialization> Specialization { get; set; } = new ObservableCollection<Model_Specialization>();
         public ObservableCollection<Model_DoctorData> Doctors { get; set; } = new ObservableCollection<Model_DoctorData>();
+
+        string _locationQuery = string.Empty;
+        public string LocationQuery
+        {
+            get => _locationQuery;
+            set
+            {
+                if(_locationQuery != value)
+                {
+                    _locationQuery = valu
+                    base.NotifyUI();
+
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        this.Location.Clear();
+                        var locs = this._locationBacker.Where(x => x.CityName.ToLower() == value.ToLower());
+                        if(locs != null)
+                        {
+                            for(int i = 0; i < locs.ToList().Count; i++)
+                            {
+                                this.Location.Add(locs.ElementAt(i));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         #endregion
 
         #region ctors
@@ -72,16 +107,17 @@ namespace Login.ViewModels
                     //    data4.Add(datarow4["last_name"].ToString() + ", " + datarow4["first_name"].ToString() + ", " + datarow4["middle_name"].ToString() + "" + datarow4["title"].ToString());
                     //}
 
-                    //List<Model_PersonDetails> _doctors = new List<Model_PersonDetails>();
-                    var des = (List<Model_DoctorData>)JsonConvert.DeserializeObject(result4);
-                    if(des != null)
+                    var docs = (List<Model_DoctorData>)JsonConvert.DeserializeObject(result4, typeof(List<Model_DoctorData>));
+                    if(docs != null)
                     {
+                        this._doctorsBacker.Clear();
                         this.Doctors.Clear();
 
                         // mas mabilis kesa foreach
-                        for(int i = 0; i < des.Count; i++)
+                        for(int i = 0; i < docs.Count; i++)
                         {
-                            this.Doctors.Add(des[i]);
+                            this._doctorsBacker.Add(docs[i]);
+                            this.Doctors.Add(docs[i]);
                         }
                     }
                 }
@@ -105,6 +141,160 @@ namespace Login.ViewModels
             //    })
             //);
             if (Command_Filter == null) Command_Filter = new Command(Command_Filter_Tap);
+        }
+
+        public async void Init()
+        {
+            if(await GetLocations())
+            {
+                bool result = await GetSpecializations();
+                if(!result)
+                {
+                    await base.Alert("ERROR", "Unable to resolve specializations");
+                }
+            }
+            else
+            {
+                await base.Alert("ERROR", "Unable to resolve locations");
+            }
+        }
+
+        async Task<bool> GetLocations()
+        {
+            base.IsBusy = true;
+            bool ok = false;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+
+                var postData = new List<KeyValuePair<string, string>>();
+                string query = "SELECT refcitymun.citymunCode , refcitymun.citymunDesc,refprovince.provDesc, refprovince.provCode FROM " +
+                    "refcitymun LEFT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' OR refprovince.provDesc " +
+                    "LIKE '%a%' OR refcitymun.citymunCode LIKE '%a%' OR refcitymun.citymunDesc LIKE '%a%'" +
+                    "UNION SELECT refcitymun.citymunCode , refcitymun.citymunDesc,refprovince.provDesc, refprovince.provCode " +
+                    "FROM refcitymun RIGHT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' " +
+                    "OR refprovince.provDesc LIKE '%a%' OR refcitymun.citymunCode " +
+                    "LIKE '%a%' OR refcitymun.citymunDesc LIKE '&a%' ORDER BY citymunDesc ASC";
+
+                postData.Add(new KeyValuePair<string, string>("query", query));
+                postData.Add(new KeyValuePair<string, string>("apikey", "clair3m0ntf3rr0nd!"));
+
+                var content = new FormUrlEncodedContent(postData);
+
+                client.BaseAddress = new Uri("http://api.clairemontferrond.tech/kardia/read.php");
+
+                var response = await client.PostAsync("http://api.clairemontferrond.tech/kardia/read.php", content); //change content to null if no postdata to be post
+                var result = response.Content.ReadAsStringAsync().Result;
+
+                if (result == "Invalid")
+                {
+                    await base.Alert("", "INVALID", "Ok");
+                }
+                else if (result == "No Data")
+                {
+                    await base.Alert("", "NO DATA", "Ok");
+                }
+                else
+                {
+                    //DataTable dt = new DataTable();
+                    //dt = (DataTable)JsonConvert.DeserializeObject(result, (typeof(DataTable))); // your response is in json text need to deserialize into datatable
+                    //data = new ObservableCollection<string>();
+                    //foreach (DataRow datarow in dt.Rows)
+                    //{
+                    //    data.Add(datarow["citymunDesc"].ToString() + ", " + datarow["provDesc"].ToString());
+
+                    //}
+
+
+                    var locs = (List<Model_Location>)JsonConvert.DeserializeObject(result, typeof(List<Model_Location>));
+                    if (locs != null)
+                    {
+                        this._locationBacker.Clear();
+                        this.Location.Clear();
+
+                        for (int i = 0; i < locs.Count; i++)
+                        {
+                            this._locationBacker.Add(locs[i]);
+                        }
+
+                        ok = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ok = false;
+                await base.Alert("ERROR", ex.Message);
+            }
+
+            base.IsBusy = false;
+
+            return ok;
+        }
+
+        async Task<bool> GetSpecializations()
+        {
+            base.IsBusy = true;
+            bool ok = false;
+
+            try
+            {
+                HttpClient client1 = new HttpClient();
+
+                var postData1 = new List<KeyValuePair<string, string>>();
+                string query1 = "select * from specialization";
+                postData1.Add(new KeyValuePair<string, string>("query", query1));
+                postData1.Add(new KeyValuePair<string, string>("apikey", "clair3m0ntf3rr0nd!"));
+
+                var content1 = new FormUrlEncodedContent(postData1);
+
+                client1.BaseAddress = new Uri("http://api.clairemontferrond.tech/kardia/read.php");
+
+                var response1 = await client1.PostAsync("http://api.clairemontferrond.tech/kardia/read.php", content1); //change content to null if no postdata to be post
+                var result = response1.Content.ReadAsStringAsync().Result;
+
+                if (result == "Invalid")
+                {
+                    await base.Alert("", "INVALID", "Ok");
+                }
+                else if (result == "No Data")
+                {
+                    await base.Alert("", "no DTA", "Ok");
+                }
+                else
+                {
+                    //DataTable dt1 = new DataTable();
+                    //dt1 = (DataTable)JsonConvert.DeserializeObject(result1, (typeof(DataTable))); // your response is in json text need to deserialize into datatable
+                    //data1 = new ObservableCollection<string>();
+                    //foreach (DataRow datarow1 in dt1.Rows)
+                    //{
+                    //    data1.Add(datarow1["name"].ToString());
+                    //}
+
+                    var spec = (List<Model_Specialization>)JsonConvert.DeserializeObject(result, typeof(List<Model_Specialization>));
+                    if (spec != null)
+                    {
+                        this._specializationBacker.Clear();
+
+                        for (int i = 0; i < spec.Count; i++)
+                        {
+                            this._specializationBacker.Add(spec[i]);
+                        }
+
+                        ok = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ok = false;
+                await base.Alert("ERROR", ex.Message);
+            }
+
+            base.IsBusy = false;
+
+            return ok;
         }
         #endregion
 

@@ -36,14 +36,22 @@
                                     </StackLayout>
                                     <StackLayout>
                                         <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
-                                            <Entry  TextChanged="searchBar_TextChanged"  BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBar" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
+                                            <Entry Text="{Binding LocationQuery}" BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBar" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
                                         </Frame>
-                                        <ListView x:Name="provincelist" IsVisible="False"   CachingStrategy="RecycleElement" BackgroundColor="White" ItemTapped="countryListView_ItemTapped" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                                        <ListView ItemsSource="{Binding Location}" CachingStrategy="RecycleElement" BackgroundColor="White" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <StackLayout BackgroundColor="White">
-                                                            <Label Text="{Binding .}" FontSize="16" TextColor="#FF464859" />
+                                                            <Label FontSize="16" TextColor="#FF464859">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding CityNam}" />
+                                                                        <Span Text=", " />
+                                                                        <Span Text="{Binding Province}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                         </StackLayout>
                                                     </ViewCell>
                                                 </DataTemplate>
@@ -57,9 +65,9 @@
                                     </StackLayout>
                                     <StackLayout Margin="0,0,0,0" Padding="0" >
                                         <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
-                                            <Entry TextChanged="searchBar_TextChanged_1"  BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBarspecialization" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
+                                            <Entry BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBarspecialization" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
                                         </Frame>
-                                        <ListView x:Name="specialtylist" IsVisible="False" CachingStrategy="RecycleElement" BackgroundColor="White" ItemTapped="specialtylist_ItemTapped" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                                        <ListView x:Name="specialtylist" IsVisible="False" CachingStrategy="RecycleElement" BackgroundColor="White" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>

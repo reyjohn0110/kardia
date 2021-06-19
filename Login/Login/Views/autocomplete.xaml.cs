@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Linq;
-using System.Net.Http;
+﻿using Login.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,25 +8,26 @@ namespace Login.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class autocomplete : ContentPage
     {
-        ObservableCollection<string> data = new ObservableCollection<string>();
-        ObservableCollection<string> data1 = new ObservableCollection<string>();
-        ObservableCollection<string> data3 = new ObservableCollection<string>();
-        ObservableCollection<string> data4 = new ObservableCollection<string>();
-        //  ObservableCollection<string> data5 = new ObservableCollection<string>();
+        //ObservableCollection<string> data = new ObservableCollection<string>();
+        //ObservableCollection<string> data1 = new ObservableCollection<string>();
+        //ObservableCollection<string> data3 = new ObservableCollection<string>();
+        //ObservableCollection<string> data4 = new ObservableCollection<string>();
+        //ObservableCollection<string> data5 = new ObservableCollection<string>();
        
 
         public autocomplete()
         {
             InitializeComponent();
 
-            LoadCities();
-            LoadSpecializations();
-            LoadDoctors();
+            ((ViewModel_SearchDoctor)this.BindingContext).Init();
+
+            //LoadCities();
+            //LoadSpecializations();
+            //LoadDoctors();
             // LoadData5();
-           
-            BindingContext = this;
         }
 
+        /*
         //Search Location
         public async void LoadCities()
         {
@@ -347,6 +342,6 @@ namespace Login.Views
         }
         
 
-      
+ */     
     }
 }

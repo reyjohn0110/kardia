@@ -30,7 +30,7 @@ namespace Login.ViewModels
 
         #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
-        void NotifyUI([CallerMemberName] string propName = "")
+        public void NotifyUI([CallerMemberName] string propName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
