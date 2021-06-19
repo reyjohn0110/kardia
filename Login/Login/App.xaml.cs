@@ -15,6 +15,8 @@ namespace Login
             MainPage = new NavigationPage(new Log1());
             //MainPage = new NavigationPage(new Searchdoctor());
             //MainPage = new NavigationPage(new autocomplete());
+
+            // hello world
         }
 
         protected override void OnStart()
