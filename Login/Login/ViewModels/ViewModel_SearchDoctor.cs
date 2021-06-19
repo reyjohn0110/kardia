@@ -34,7 +34,7 @@ namespace Login.ViewModels
             get => _locationQuery;
             set
             {
-                if(_locationQuery != value)
+                if (_locationQuery != value)
                 {
                     this.Location.Clear();
                     _locationQuery = value;
@@ -43,9 +43,9 @@ namespace Login.ViewModels
                     if (!string.IsNullOrEmpty(value))
                     {
                         var locs = this._locationBacker.Where(x => x.CityName.ToLower().Contains(value.ToLower()));
-                        if(locs != null)
+                        if (locs != null)
                         {
-                            for(int i = 0; i < locs.Take(20).Count(); i++)
+                            for (int i = 0; i < locs.Take(20).Count(); i++)
                             {
                                 this.Location.Add(locs.ElementAt(i));
                             }
@@ -125,7 +125,7 @@ namespace Login.ViewModels
                 _selectedLocation = value;
                 base.NotifyUI();
 
-                if(value != null)
+                if (value != null)
                     this.LocationQuery = value.CityName + ", " + value.Province;
             }
         }
@@ -190,13 +190,13 @@ namespace Login.ViewModels
                 else
                 {
                     var docs = (List<Model_DoctorData>)JsonConvert.DeserializeObject(result4, typeof(List<Model_DoctorData>));
-                    if(docs != null)
+                    if (docs != null)
                     {
                         this._doctorsBacker.Clear();
                         this.Doctors.Clear();
 
                         // mas mabilis kesa foreach
-                        for(int i = 0; i < docs.Count; i++)
+                        for (int i = 0; i < docs.Count; i++)
                         {
                             this._doctorsBacker.Add(docs[i]);
                             this.Doctors.Add(docs[i]);
@@ -204,7 +204,7 @@ namespace Login.ViewModels
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await base.Alert("Error", ex.Message, "ok");
             }
@@ -227,10 +227,10 @@ namespace Login.ViewModels
 
         public async void Init()
         {
-            if(await GetLocations())
+            if (await GetLocations())
             {
                 bool result = await GetSpecializations();
-                if(!result)
+                if (!result)
                 {
                     await base.Alert("ERROR", "Unable to resolve specializations");
                 }
@@ -304,7 +304,7 @@ namespace Login.ViewModels
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ok = false;
                 await base.Alert("ERROR", ex.Message);
@@ -368,7 +368,7 @@ namespace Login.ViewModels
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ok = false;
                 await base.Alert("ERROR", ex.Message);
@@ -379,7 +379,5 @@ namespace Login.ViewModels
             return ok;
         }
         #endregion
-
-        
     }
 }
