@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.Home"
+            BackgroundImageSource="bg5.jpg">
+    
+ <ScrollView>
+
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="25" HorizontalOptions="FillAndExpand">
+                        <Label Text="Home" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Start" />
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center"  Margin="15,80,15,0">
+
+                    <StackLayout Orientation="Vertical">
+                        <Button Text="Hello" TextColor="White" BackgroundColor="DarkGoldenrod" WidthRequest="175"  HeightRequest="180"  CornerRadius="10"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical">
+                        <Button Text="Hi" TextColor="White" WidthRequest="175" BackgroundColor="DarkCyan" HeightRequest="180"  CornerRadius="10"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+                <StackLayout Margin="15,280,15,0" Padding="0" HorizontalOptions="FillAndExpand">
+                    <Button Text="New Appointment" BackgroundColor="CadetBlue" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "350" HeightRequest="110"  Image="deadline.png"/>
+                </StackLayout>
+
+
+                <StackLayout Margin="15,410,15,0" Padding="0" HorizontalOptions="FillAndExpand">
+                    <Button Text="New Appointment" BackgroundColor="CadetBlue" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "350" HeightRequest="180"  Image="deadline.png"/>
+                </StackLayout>
+
+                <StackLayout Margin="15,610,15,0" Padding="0" HorizontalOptions="FillAndExpand">
+                    <Button Text="New Appointment" BackgroundColor="CadetBlue" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "350" HeightRequest="110"  Image="deadline.png"/>
+                </StackLayout>
+
+
+
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

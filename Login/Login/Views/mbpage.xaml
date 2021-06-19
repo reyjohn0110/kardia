@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+    
+<ContentPage NavigationPage.HasNavigationBar="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.Mbpage"
+            BackgroundImageSource="bg5.jpg">
+    
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand">
+
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,70,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="350" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="5">
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Margin="5">
+                                <Label Text="Please enter your mobile number." TextColor="Black" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,20,0,0">
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+                                        <!-- for mobile number textbox -->
+                                        <Label FontSize="20" Margin="10,10,10,10">+63</Label>
+                                        <Entry x:Name="mobileNumber" Placeholder="Mobile No." Keyboard="Numeric" MaxLength="10" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
+                                    <Label Text="By continuing, you confirm that you're the owner or primary user of this mobile phone number. You agree to receive automated texts to confirm your phone number, Message and data rates may apply." TextColor="Black" FontSize="10" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <!--Code for button -->
+                            <StackLayout Margin="0,60,0,0" Padding="0">
+                                <Button Text="Confirm" Clicked="SendOTP" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "180" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

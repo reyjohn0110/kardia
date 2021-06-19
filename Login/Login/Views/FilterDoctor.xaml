@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="false"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.FilterDoctor"
+             BackgroundImageSource="bg5.jpg">
+    <ScrollView>
+        <StackLayout Spacing="0" HorizontalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand">
+
+
+                <StackLayout Margin="0,0,0,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="580" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="4">
+                            </StackLayout>
+                            <StackLayout Margin="0,0,0,0" HorizontalOptions="Center">
+                                <Label Text="Search" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+
+                            <!-- Search location -->
+                            <StackLayout Margin="0,5,0,0" HorizontalOptions="StartAndExpand">
+                                <Label Text="Select Location" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <Entry  TextChanged="searchBar_TextChanged"  BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBar" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
+                                </Frame>
+                                <ListView x:Name="provincelist" IsVisible="False"   CachingStrategy="RecycleElement" BackgroundColor="White" ItemTapped="provincelist_ItemTapped" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout BackgroundColor="White">
+                                                    <Label Text="{Binding .}" FontSize="16" TextColor="#FF464859" />
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+
+                            <!-- Search specialty -->
+                            <StackLayout Margin="0,20,0,0" HorizontalOptions="StartAndExpand">
+                                <Label Text="Select Specialization" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                            <StackLayout Margin="0,0,0,0" Padding="0" >
+                                <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <Entry TextChanged="searchBarspecialization_TextChanged"  BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchBarspecialization" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
+                                </Frame>
+                                <ListView x:Name="specialtylist" IsVisible="False" CachingStrategy="RecycleElement" BackgroundColor="White" ItemTapped="specialtylist_ItemTapped" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout BackgroundColor="White">
+                                                    <Label Text="{Binding .}" FontSize="16" TextColor="#FF464859"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+
+
+                            <StackLayout Margin="0,20,0,0" Padding="0">
+                                <Button Text="Search" Clicked="Button_Clicked"  BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "100" HorizontalOptions="FillAndExpand" HeightRequest="44"/>
+                            </StackLayout>
+
+                            <!--Find Doctor -->
+                            <StackLayout Margin="0,20,0,0" HorizontalOptions="StartAndExpand">
+                                <Label Text="Find Doctor" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                            </StackLayout>
+                            <StackLayout Margin="0,0,0,0" Padding="0" >
+                                <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <Entry TextChanged="searchbarDoctor_TextChanged"  BackgroundColor="#f9f9f9" TextColor="#FF464859" FontSize="16" PlaceholderColor="#646b7a" x:Name="searchbarDoctor" Placeholder="Search" AbsoluteLayout.LayoutBounds="15,70,285,38" AbsoluteLayout.LayoutFlags="None"/>
+                                </Frame>
+                                <ListView x:Name="doctorlist" IsVisible="False" CachingStrategy="RecycleElement" BackgroundColor="White" ItemTapped="doctorlist_ItemTapped" AbsoluteLayout.LayoutBounds="20,110,269,160" AbsoluteLayout.LayoutFlags="None">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout BackgroundColor="White">
+                                                    <Label Text="{Binding .}" FontSize="16" TextColor="#FF464859"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+
+                            <!--Find Doctor collection view-->
+                            <!--<StackLayout>
+                                <SearchBar x:Name="search1" Placeholder="Search Doctor" PlaceholderColor="BlanchedAlmond" TextColor="BlanchedAlmond" CancelButtonColor="BlanchedAlmond" BackgroundColor="Red" HorizontalTextAlignment="Center" TextChanged="search1_TextChanged"></SearchBar>
+                                <CollectionView x:Name="Coll1" ItemsSource="{Binding Ilist}" ItemsLayout="VerticalList" >
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Padding="10" Margin="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1.5*"></RowDefinition>
+                                                    <RowDefinition Height="1.5*"></RowDefinition>
+                                                    <RowDefinition Height="1*"></RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="{Binding ImageURL}" Aspect="AspectFit" Grid.RowSpan="2" HeightRequest="150" Grid.Column="0"></Image>
+                                                <Label Text="{Binding DoctorName}" FontAttributes="Bold" FontSize="Micro" Grid.Row="0" Grid.Column="1"></Label>
+                                                <Label Text="{Binding Description}" FontSize="12" Grid.Row="1" Grid.Column="1"></Label>
+                                                <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="2" VerticalOptions="Center" HeightRequest="3" BackgroundColor="Red"></BoxView>
+                                            </Grid>
+                                        </DataTemplate>
+
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout> -->
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

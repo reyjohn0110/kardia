@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="false"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.emailpage"
+             BackgroundImageSource="bg5.jpg">
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid>
+
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,150,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="370" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="5">
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="5">
+                                <Label Text="Please enter your email." TextColor="Black" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,50,0,0">
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <!-- for email textbox -->
+                                        <Entry x:Name="email" Placeholder="Email" Keyboard="Text"  TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
+                                    <Label Text="By continuing, you confirm that you're the owner or primary user of this email. You agree to receive automated mail to confirm your email." TextColor="Black" FontSize="10" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <!--Code for button -->
+                            <StackLayout Margin="0,50,0,0" Padding="0">
+                                <Button Text="Confirm" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "180" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.emailphone"
+            BackgroundImageSource="bg5.jpg">
+    
+    <ScrollView>
+
+        <StackLayout HorizontalOptions="FillAndExpand">
+            <Grid HorizontalOptions="FillAndExpand">
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,80,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="300" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0">
+                            </StackLayout>
+
+                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0">
+                                <Label Text="Register" TextColor="Black" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+
+                            <StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand" Margin="10">
+                                    <Label Text="Your health should be the ones priority in order to live your life to fullest." TextColor="Black" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="It seems that you're not still registered. Become a member of Kardia with these methods." TextColor="Black" FontSize="11" FontAttributes="Bold" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <!--Code for button -->
+
+                            <StackLayout Margin="0,25,0,0" Padding="0">
+                                <Button Text="Via Email" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "250" HorizontalOptions="FillAndExpand" Image="ssss.png"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,25,0,0" Padding="0">
+                                <Button Text="Via Phone Number" Clicked="Button_Clicked_1" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "250" HorizontalOptions="FillAndExpand" Image="smartphone.png"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

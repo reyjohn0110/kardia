@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage NavigationPage.HasNavigationBar="false"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            xmlns:views="clr-namespace:Login.Views"
+            x:Class="Login.Views.dashboard">
+
+    <views:Home Title="Home" IconImageSource="hh.png"></views:Home>
+    <views:Appointment Title="Appointment" IconImageSource="app.png"></views:Appointment>
+    <views:Doctors Title="Doctors" IconImageSource="doctors.png"></views:Doctors>
+    <views:Profile Title="Profile" IconImageSource="pp.png"></views:Profile>
+    <views:autocomplete Title="Search" IconImageSource="search.png"></views:autocomplete>
+</TabbedPage>

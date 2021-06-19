@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.Searchspecialization">
+    <StackLayout Spacing="0">
+        <Grid>
+            <!-- used to modify background color/background as well height and width -->
+
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="Transparent" HeightRequest="800" WidthRequest="460" HorizontalOptions="Center" Padding="0">
+                    <Image Source="bg5.png" Aspect="AspectFill" Margin="0"/>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="Transparent" HeightRequest="100" HorizontalOptions="FillAndExpand" Padding="0">
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+            <!-- use to make the frame of the UI -->
+            <StackLayout Margin="0,0,0,0">
+
+                <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="180" HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand" Margin="4">
+                        </StackLayout>
+                        <StackLayout Margin="0,0,0,0" HorizontalOptions="Start">
+                            <Label Text="Select Specialty" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Start" />
+                        </StackLayout>
+
+                        <StackLayout Margin="0,15,0,0" Padding="0" >
+                            <Frame BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                <SearchBar HeightRequest="44" WidthRequest="350" Placeholder="Search Specialization"/>
+                            </Frame>
+                        </StackLayout>
+
+                        <StackLayout Margin="0,17,0,0" Padding="0">
+                            <Button Text="Next" Clicked="Button_Clicked"  BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "120" HorizontalOptions="End" HeightRequest="44"/>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </Frame>
+
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>

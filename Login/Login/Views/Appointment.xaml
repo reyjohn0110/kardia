@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.Appointment"
+              BackgroundImageSource="bg5.jpg">
+    <ScrollView>
+        <StackLayout Spacing="0">
+            <Grid>
+
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,30,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="350" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="4">
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="1">
+                                <Label Text="Choose a service you need." TextColor="Black" FontSize="25" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                            </StackLayout>
+                            <!--Code for button -->
+
+                            <StackLayout Margin="0,40,0,0" Padding="0" >
+                                <Button Text="New Appointment" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "290" HeightRequest="90" HorizontalOptions="Center" Image="schedule.png"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,25,0,0" Padding="0">
+                                <Button Text="Manage Appointment" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "290" HorizontalOptions="Center" HeightRequest="90" Image="timemanagement.png"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

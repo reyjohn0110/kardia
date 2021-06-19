@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="Login.Views.Signup"
+             BackgroundImageSource="bg5.jpg">
+    
+    <ScrollView>
+        <StackLayout>
+            <Grid>
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,20,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="590" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
+                                <Label Text="Sign up for Kardia" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <Label Text="This information needs to be accurate." TextColor="Black" FontSize="15" FontAttributes="Bold"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,15,0,0">
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <!-- for textboxes -->
+                                        <Entry x:Name="fname" Placeholder="First Name" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="mname" Placeholder="Middle Name" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="lname" Placeholder="Last Name" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="5,15,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+                                        </Frame>
+
+                                        <Entry x:Name="suffix" Placeholder="Name Extension" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Label Text="Gender" TextColor="Black" FontAttributes="Bold"></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,0,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                        <StackLayout>
+                                            <Picker x:Name="gender" HorizontalOptions="FillAndExpand">
+                                                <Picker.Items>
+                                                    <x:String>Male</x:String>
+                                                    <x:String>Female</x:String>
+                                                    <x:String>LGBT</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="password" Placeholder="Create your password" IsPassword="True" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                            </StackLayout>
+
+                            <!--Code for button -->
+                            <StackLayout Margin="0,20,0,0" Padding="0">
+                                <Button Text="Sign Up" BackgroundColor="Red" Clicked="Button_Clicked_2" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "170" HorizontalOptions="End"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

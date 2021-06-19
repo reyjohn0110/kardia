@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="false"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.Log1"
+             BackgroundImageSource="bg5.jpg">
+    
+  <ScrollView>
+    <StackLayout HorizontalOptions="CenterAndExpand">
+        <Grid>
+      
+        <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,120,15,0" HorizontalOptions="FillAndExpand">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="500" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
+                                <Label Text="Welcome to Kardia" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                                <Label Text="Thank you for using this app, designed to help you manage you appointment at your fingertips." TextColor="Black" FontSize="15" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <!-- for textboxes username and password -->
+                            <StackLayout Margin="0,30,0,0">
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+                                        
+                                        <Entry x:Name="emailorphone" Placeholder="Email or Phone Number" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+                                        <Entry x:Name="pword" Placeholder="Password" IsPassword="True" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                            
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="Center">
+                            <Label Text="Forgot Password?" HorizontalTextAlignment="Center" TextColor="Red" FontAttributes="Bold" VerticalTextAlignment="Center"/>
+                        </StackLayout>
+
+                        <!-- for login button-->
+                        <StackLayout Margin="0,20,0,0" Padding="0">
+                            <Button Text="Log In" Clicked="Button_Clicked" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10"/>
+                        </StackLayout>
+
+
+                            <StackLayout Margin="0,20,0,0" Padding="0">
+                                <Grid>
+                                    <BoxView BackgroundColor="DarkGray" HeightRequest="1" WidthRequest="150"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Frame BackgroundColor="White" HeightRequest="40" WidthRequest="45" CornerRadius="45" HasShadow="False" BorderColor="DarkGray" Margin="0" HorizontalOptions="Center" Padding="0">
+                                        <Label Text="OR" TextColor="DarkGray" FontSize="Small" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,20,0,0" Padding="0">
+                                <Button Text="Sign Up" Clicked="Button_Clicked_1" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10"/>
+                            </StackLayout>
+                         </StackLayout>
+                  </Frame>
+            </StackLayout>
+            </Grid>
+        </StackLayout>
+      </ScrollView>
+</ContentPage>

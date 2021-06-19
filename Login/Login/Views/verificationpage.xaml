@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Login.Models" xmlns:local1="clr-namespace:Login.CustomRenderer"
+             x:Class="Login.Views.Verificationpage"
+             BackgroundImageSource="bg5.jpg">
+  
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <!-- used to modify background color/background as well height and width -->
+                  <StackLayout Padding="0" Margin="0">
+                    <Frame BackgroundColor="Transparent" HeightRequest="800" WidthRequest="460" HorizontalOptions="Center" Padding="0">
+                        <Image Source="bg5.png" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Padding="0" Margin="0">
+                    <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="FillAndExpand" Padding="0">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout> 
+                <!-- use to make the frame of the UI -->
+
+                <StackLayout Margin="0,70,0,0">
+                    <Frame BackgroundColor="White" HasShadow="True" HeightRequest="360" Padding="0" Margin="10">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="30,20,30,0">
+                                <Label Text="{Binding LabelTitleProperty}" TextColor="Black" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <Label Text="{Binding LabelDescriptionProperty}" TextColor="Gray" HorizontalTextAlignment="Center" FontSize="Small" FontAttributes="Bold" />
+                            </StackLayout>
+
+                            <StackLayout Margin="20">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                    <Frame x:Name="box1" BackgroundColor="White" BorderColor="DarkGray" WidthRequest="60" VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code1" Focused="Entry_Focused" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next" Keyboard="Numeric" MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small" Completed="code1_Completed"/>
+                                    </Frame>
+                                    <Frame x:Name="box2"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="60"  VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code2" Focused="Entry_Focused_1" Unfocused="box1_Unfocused"  Text="" ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small" Completed="code2_Completed"/>
+                                    </Frame>
+                                    <Frame x:Name="box3"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="60"  VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code3" Focused="Entry_Focused_2" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small"/>
+                                    </Frame>
+                                    <Frame x:Name="box4"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="60"  VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code4" Focused="Entry_Focused_3" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small"/>
+                                    </Frame>
+                                    <Frame x:Name="box5"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="60"  VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code5" Focused="Entry_Focused_4" Text=""  Unfocused="box1_Unfocused"  ReturnType="Next"  Keyboard="Numeric"  MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small"/>
+                                    </Frame>
+                                    <Frame x:Name="box6"  BackgroundColor="White" BorderColor="DarkGray"  WidthRequest="60"  VerticalOptions="Fill" Padding="0" Margin="0">
+                                        <local1:EntryCustomRenderer x:Name="code6" Focused="Entry_Focused_5" Text=""  Unfocused="box1_Unfocused"  ReturnType="Done"  Keyboard="Numeric"  MaxLength="1"  Placeholder="" HorizontalOptions="CenterAndExpand" FontSize="Small"/>
+                                    </Frame>
+
+                                </StackLayout>
+                                
+                                <StackLayout Margin="40,40">
+                                    <Button Text="Get Verified" BackgroundColor="Red" CornerRadius="10" TextColor="White" Clicked="Button_Clicked" WidthRequest = "180" HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                     </Frame>
+                </StackLayout>
+            </Grid>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

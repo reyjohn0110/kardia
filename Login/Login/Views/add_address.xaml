@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="False"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Login.Views.add_address">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <!-- used to modify background color/background as well height and width -->
+                <StackLayout Padding="0" Margin="0">
+                    <Frame BackgroundColor="Transparent" HeightRequest="800" WidthRequest="460" HorizontalOptions="Center" Padding="0">
+                        <Image Source="bg5.png" Aspect="AspectFill" Margin="0"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Padding="0" Margin="0">
+                    <Frame BackgroundColor="Transparent" HeightRequest="200" HorizontalOptions="FillAndExpand" Padding="0">
+                        <StackLayout HorizontalOptions="CenterAndExpand">
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+                <!-- use to make the frame of the UI -->
+                <StackLayout Margin="15,25,15,0">
+
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="700" HorizontalOptions="FillAndExpand">
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
+                                <Label Text="Add your Address" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                <Label Text="This information needs to be accurate." TextColor="Black" FontSize="15" FontAttributes="Bold"/>
+                            </StackLayout>
+
+                            <StackLayout Margin="0,20,0,0">
+                                <Label Text="Date Of Birth" TextColor="Black" FontAttributes="Bold"></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,0,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <DatePicker></DatePicker>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="nationality" Placeholder="Nationality" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="address" Placeholder="Street name / House no." TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="5,15,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+                                        </Frame>
+
+                                        <Entry x:Name="barangaydist" Placeholder="Barangay / District" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="citymunis" Placeholder="City / Municipality" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,20,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame BackgroundColor="AliceBlue" CornerRadius="50" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start"  Margin="7">
+
+                                        </Frame>
+
+                                        <Entry x:Name="zip" Placeholder="ZIP Code" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0,0,15,0"/>
+                                    </StackLayout>
+                                </Frame>
+
+                                <Label Text="Province / Region" TextColor="Black" FontAttributes="Bold"></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="Transparent" BorderColor="Black" Padding="0" Margin="0,0,0,0"  CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                        <StackLayout>
+                                            <Picker x:Name="Gender" HorizontalOptions="FillAndExpand">
+                                                <Picker.Items>
+                                                    <x:String>Male</x:String>
+                                                    <x:String>Female</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+
+                            </StackLayout>
+
+                            <!--Code for button -->
+                            <StackLayout Margin="0,40,0,0" Padding="0">
+                                <Button Text="SIGN UP" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "170" HorizontalOptions="End"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
