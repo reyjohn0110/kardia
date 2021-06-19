@@ -12,9 +12,9 @@ namespace Login
         {
             InitializeComponent();
             
-            MainPage = new NavigationPage(new Log1());
+            //MainPage = new NavigationPage(new Log1());
             //MainPage = new NavigationPage(new Searchdoctor());
-            //MainPage = new NavigationPage(new autocomplete());
+            MainPage = new NavigationPage(new autocomplete());
         }
 
         protected override void OnStart()

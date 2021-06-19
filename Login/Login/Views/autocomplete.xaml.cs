@@ -5,8 +5,6 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -26,16 +24,17 @@ namespace Login.Views
         public autocomplete()
         {
             InitializeComponent();
-            LoadData();
-            LoadData1();
-            LoadData3();
+
+            LoadCities();
+            LoadSpecializations();
+            LoadDoctors();
             // LoadData5();
            
             BindingContext = this;
         }
 
         //Search Location
-        public async void LoadData()
+        public async void LoadCities()
         {
             try
             {
@@ -115,8 +114,6 @@ namespace Login.Views
 
         }
 
-
-
         private void countryListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             //EmployeeListView.IsVisible = false;  
@@ -130,7 +127,7 @@ namespace Login.Views
 
 
         ////Search specialization
-        public async void LoadData1()
+        public async void LoadSpecializations()
         {
             try
             {
@@ -215,7 +212,7 @@ namespace Login.Views
         }
 
         //Search doctor
-        public async void LoadData3()
+        public async void LoadDoctors()
         {
             try
             {
@@ -268,35 +265,35 @@ namespace Login.Views
         private void searchbarDoctor_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            doctorlist.IsVisible = true;
-            doctorlist.BeginRefresh();
+            //doctorlist.IsVisible = true;
+            //doctorlist.BeginRefresh();
 
-            try
-            {
-                var dataEmpty3 = data3.Where(i => i.ToLower().Contains(e.NewTextValue.ToLower()));
+            //try
+            //{
+            //    var dataEmpty3 = data3.Where(i => i.ToLower().Contains(e.NewTextValue.ToLower()));
 
-                if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                    doctorlist.IsVisible = false;
-                else if (dataEmpty3.Max().Length == 0)
-                    doctorlist.IsVisible = false;
-                else
-                    doctorlist.ItemsSource = data3.Where(i => i.ToLower().Contains(e.NewTextValue.ToLower()));
-            }
-            catch (Exception ex)
-            {
-                doctorlist.IsVisible = false;
+            //    if (string.IsNullOrWhiteSpace(e.NewTextValue))
+            //        doctorlist.IsVisible = false;
+            //    else if (dataEmpty3.Max().Length == 0)
+            //        doctorlist.IsVisible = false;
+            //    else
+            //        doctorlist.ItemsSource = data3.Where(i => i.ToLower().Contains(e.NewTextValue.ToLower()));
+            //}
+            //catch (Exception ex)
+            //{
+            //    doctorlist.IsVisible = false;
 
-            }
-            doctorlist.EndRefresh();
+            //}
+            //doctorlist.EndRefresh();
         }
 
         private void doctorlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            String subdoc = e.Item as string;
-            searchbarDoctor.Text = subdoc;
-            doctorlist.IsVisible = false;
+            //String subdoc = e.Item as string;
+            //searchbarDoctor.Text = subdoc;
+            //doctorlist.IsVisible = false;
 
-            ((ListView)sender).SelectedItem = null;
+            //((ListView)sender).SelectedItem = null;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

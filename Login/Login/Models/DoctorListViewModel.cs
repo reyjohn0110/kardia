@@ -31,7 +31,7 @@ namespace Login.Models
         public DoctorListViewModel()
         {
             DoctorsList = new ObservableCollection<Doctor>();
-            PopulateDoctors();
+            //PopulateDoctors();
         }
 
         private CancellationTokenSource throttleCts = new CancellationTokenSource();
@@ -76,6 +76,14 @@ namespace Login.Models
                );
 
             }
+            catch(Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    $"{ex.Message}\r\n{ex.StackTrace}",
+                    "Okay"
+               );
+            }
 
         }
 
@@ -86,6 +94,7 @@ namespace Login.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
     public class DoctorData
     {
         public string DoctorName { get; set; }
