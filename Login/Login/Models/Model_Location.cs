@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace Login.Models
@@ -6,6 +7,7 @@ namespace Login.Models
     public class Model_Location : INotifyPropertyChanged
     {
         string _cityName = string.Empty;
+        [JsonProperty("citymunDesc")]
         public string CityName
         {
             get => _cityName;
@@ -20,6 +22,7 @@ namespace Login.Models
         }
 
         string _province = string.Empty;
+        [JsonProperty("provDesc")]
         public string Province
         {
             get => _province;
@@ -27,7 +30,7 @@ namespace Login.Models
             {
                 if (_province != value)
                 {
-                    _cityName = value;
+                    _province = value;
                     NotifyUI();
                 }
             }

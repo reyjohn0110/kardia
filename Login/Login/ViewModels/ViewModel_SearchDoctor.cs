@@ -16,6 +16,8 @@ namespace Login.ViewModels
     public class ViewModel_SearchDoctor : ViewModelBase
     {
         #region vars
+        // backer lists
+        // where you will store the records from the API server
         List<Model_Location> _locationBacker = new List<Model_Location>();
         List<Model_Specialization> _specializationBacker = new List<Model_Specialization>();
         List<Model_DoctorData> _doctorsBacker = new List<Model_DoctorData>();
@@ -34,16 +36,16 @@ namespace Login.ViewModels
             {
                 if(_locationQuery != value)
                 {
-                    _locationQuery = valu
+                    this.Location.Clear();
+                    _locationQuery = value;
                     base.NotifyUI();
 
                     if (!string.IsNullOrEmpty(value))
                     {
-                        this.Location.Clear();
-                        var locs = this._locationBacker.Where(x => x.CityName.ToLower() == value.ToLower());
+                        var locs = this._locationBacker.Where(x => x.CityName.ToLower().Contains(value.ToLower()));
                         if(locs != null)
                         {
-                            for(int i = 0; i < locs.ToList().Count; i++)
+                            for(int i = 0; i < locs.Take(20).Count(); i++)
                             {
                                 this.Location.Add(locs.ElementAt(i));
                             }
@@ -52,7 +54,95 @@ namespace Login.ViewModels
                 }
             }
         }
-        
+
+        string _specializationQuery = string.Empty;
+        public string SpecializationQuery
+        {
+            get => _specializationQuery;
+            set
+            {
+                if (_specializationQuery != value)
+                {
+                    this.Specialization.Clear();
+                    _specializationQuery = value;
+                    base.NotifyUI();
+
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        var spec = this._specializationBacker.Where(x => x.Title.ToLower().Contains(value.ToLower()));
+                        if (spec != null)
+                        {
+                            for (int i = 0; i < spec.Take(20).Count(); i++)
+                            {
+                                this.Specialization.Add(spec.ElementAt(i));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        string _doctorQuery = string.Empty;
+        public string DoctorQuery
+        {
+            get => _doctorQuery;
+            set
+            {
+                if (_doctorQuery != value)
+                {
+                    this.Doctors.Clear();
+                    _doctorQuery = value;
+                    base.NotifyUI();
+
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        var docs = this._doctorsBacker.Where(x => x.FirstName.ToLower().Contains(value.ToLower()));
+                        if (docs != null)
+                        {
+                            for (int i = 0; i < docs.Take(20).Count(); i++)
+                            {
+                                this.Doctors.Add(docs.ElementAt(i));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < _doctorsBacker.Count(); i++)
+                        {
+                            this.Doctors.Add(_doctorsBacker.ElementAt(i));
+                        }
+                    }
+                }
+            }
+        }
+
+        Model_Location _selectedLocation = null;
+        public Model_Location SelectedLocation
+        {
+            get => _selectedLocation;
+            set
+            {
+                _selectedLocation = value;
+                base.NotifyUI();
+
+                if(value != null)
+                    this.LocationQuery = value.CityName + ", " + value.Province;
+            }
+        }
+
+        Model_Specialization _selectedSpecialization = null;
+        public Model_Specialization SelectedSpecialization
+        {
+            get => _selectedSpecialization;
+            set
+            {
+                _selectedSpecialization = value;
+                base.NotifyUI();
+
+                if (value != null)
+                    this.SpecializationQuery = value.Title + " ";
+            }
+        }
         #endregion
 
         #region ctors
@@ -99,14 +189,6 @@ namespace Login.ViewModels
                 }
                 else
                 {
-                    //DataTable dt4 = new DataTable();
-                    //dt4 = (DataTable)JsonConvert.DeserializeObject(result4, (typeof(DataTable))); // your response is in json text need to deserialize into datatable
-                    //data4 = new ObservableCollection<string>();
-                    //foreach (DataRow datarow4 in dt4.Rows)
-                    //{
-                    //    data4.Add(datarow4["last_name"].ToString() + ", " + datarow4["first_name"].ToString() + ", " + datarow4["middle_name"].ToString() + "" + datarow4["title"].ToString());
-                    //}
-
                     var docs = (List<Model_DoctorData>)JsonConvert.DeserializeObject(result4, typeof(List<Model_DoctorData>));
                     if(docs != null)
                     {
