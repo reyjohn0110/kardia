@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static Android.Provider.Telephony;
+﻿using System.Collections.Generic;
 
 namespace Login.Models
 {
