@@ -152,30 +152,30 @@ namespace Login.ViewModels
             InitCommands();
 
             // dummy data
-            this.Doctors.Clear();
-            this.Doctors.Add(new Model_DoctorData()
-            {
-                FirstName = "Firstname",
-                LastName = "Lastname",
-                Title = "Title",
-                HospitalClinic = "Hospital Clinic",
-                City = "City",
-                Province = "Province",
-                Specialization = "Specialization",
-                Schedule = "Schedule"
-            });
+            //this.Doctors.Clear();
+            //this.Doctors.Add(new Model_DoctorData()
+            //{
+            //    FirstName = "Firstname",
+            //    LastName = "Lastname",
+            //    Title = "Title",
+            //    HospitalClinic = "Hospital Clinic",
+            //    City = "City",
+            //    Province = "Province",
+            //    Specialization = "Specialization",
+            //    Schedule = "Schedule"
+            //});
 
-            this.Doctors.Add(new Model_DoctorData()
-            {
-                FirstName = "Firstname",
-                LastName = "Lastname",
-                Title = "Title",
-                HospitalClinic = "Hospital Clinic",
-                City = "City",
-                Province = "Province",
-                Specialization = "Specialization",
-                Schedule = "Schedule"
-            });
+            //this.Doctors.Add(new Model_DoctorData()
+            //{
+            //    FirstName = "Firstname",
+            //    LastName = "Lastname",
+            //    Title = "Title",
+            //    HospitalClinic = "Hospital Clinic",
+            //    City = "City",
+            //    Province = "Province",
+            //    Specialization = "Specialization",
+            //    Schedule = "Schedule"
+            //});
         }
         #endregion
 
@@ -197,7 +197,7 @@ namespace Login.ViewModels
                 string query = "SELECT d.id, d.first_name, d.last_name, d.title, f.hospital_clinic, c.citymunDesc, p.provDesc, s.name as specialization, df.schedule FROM `doctors` d, `doctor_facilities` df, `facilities` f, `refcitymun` c, `refprovince` p, `doctor_specialization` ds, `specialization` s WHERE df.d_id = d.id and f.city = c.id and ds.d_id = d.id and ds.s_id = s.id and c.provCode=p.provCode ";
                 query += $" and s.id={this.SelectedSpecialization.Id}";
                 query += $" and c.id={this.SelectedLocation.Id}";
-                query += " order by d.first_name";
+                query += " order by d.first_name LIMIT 20";
                 postData4.Add(new KeyValuePair<string, string>("query", query));
                 postData4.Add(new KeyValuePair<string, string>("apikey", "clair3m0ntf3rr0nd!"));
 
@@ -237,7 +237,7 @@ namespace Login.ViewModels
             }
             catch (Exception ex)
             {
-                await base.Alert("Error", ex.Message, "ok");
+                await base.Alert("Error", "No Results Found", "ok");
             }
 
             base.IsBusy = false;

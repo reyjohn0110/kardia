@@ -85,15 +85,12 @@
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <StackLayout>
                                     <Frame CornerRadius="10" Margin="5" VerticalOptions="Start">
                                         <Grid ColumnDefinitions="Auto,*">
                                             <!--display picture-->
-                                            <Grid>
-                                                <!--placeholder-->
-                                                <Grid BackgroundColor="#ffAEAEAE" WidthRequest="120" HeightRequest="120" VerticalOptions="Start" HorizontalOptions="Start">
+                                            <!--placeholder-->
+                                            <Grid BackgroundColor="#ffAEAEAE" WidthRequest="120" HeightRequest="120" VerticalOptions="Start" HorizontalOptions="Start">
 
-                                                </Grid>
                                             </Grid>
 
                                             <!--details-->
@@ -126,7 +123,7 @@
                                             </Grid>
                                         </Grid>
                                     </Frame>
-                                        
+
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
