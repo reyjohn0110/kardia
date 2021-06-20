@@ -76,16 +76,57 @@
                     <Frame BorderColor="Black" Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand">
                         <SearchBar Text="{Binding DoctorQuery}" Placeholder="Search Doctor" PlaceholderColor="Gray" TextColor="Black" CancelButtonColor="Black" BackgroundColor="White" HorizontalTextAlignment="Center" HeightRequest="50" FontSize="Medium" />
                     </Frame>
+                    <!--<Grid>
+                        <ScrollView>
+                            
+                        </ScrollView>
+                    </Grid>-->
                     <CollectionView ItemsSource="{Binding Doctors}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame CornerRadius="10" Margin="10">
-                                        <StackLayout>
-                                            <Label Text="{Binding FirstName}" />
-                                            <Label Text="{Binding LastName}" />
-                                        </StackLayout>
+                                    <StackLayout>
+                                    <Frame CornerRadius="10" Margin="5" VerticalOptions="Start">
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <!--display picture-->
+                                            <Grid>
+                                                <!--placeholder-->
+                                                <Grid BackgroundColor="#ffAEAEAE" WidthRequest="120" HeightRequest="120" VerticalOptions="Start" HorizontalOptions="Start">
+
+                                                </Grid>
+                                            </Grid>
+
+                                            <!--details-->
+                                            <Grid Margin="10,0,0,0" Grid.Column="1">
+                                                <StackLayout>
+                                                    <Label>
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding FirstName}" FontAttributes="Bold" FontSize="18"/>
+                                                                <Span Text=" " />
+                                                                <Span Text="{Binding LastName}" FontAttributes="Bold" FontSize="18" />
+                                                                <Span Text="&#10;" />
+                                                                <Span Text="{Binding Title}" FontAttributes="Bold" />
+                                                                <Span Text="&#10;&#10;" />
+                                                                <Span Text="{Binding Specialization}" FontAttributes="Bold" />
+                                                                <Span Text="&#10;&#10;" />
+                                                                <Span Text="{Binding HospitalClinic}" FontAttributes="Bold" />
+                                                                <Span Text="&#10;" />
+                                                                <Span Text="{Binding City}"  />
+                                                                <Span Text=" " />
+                                                                <Span Text="{Binding Province}" />
+                                                                <Span Text="&#10;" />
+                                                                <Span Text="{Binding Schedule}" />
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                    <Button Text="Book" BackgroundColor="Red" Margin="0,20,0,0" TextColor="White" />
+                                                </StackLayout>
+                                            </Grid>
+                                        </Grid>
                                     </Frame>
+                                        
                                 </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

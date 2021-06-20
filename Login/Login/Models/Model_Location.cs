@@ -6,6 +6,9 @@ namespace Login.Models
 {
     public class Model_Location : INotifyPropertyChanged
     {
+        [JsonProperty("id")]
+        public int Id { get; set; } = 0;
+
         string _cityName = string.Empty;
         [JsonProperty("citymunDesc")]
         public string CityName
@@ -35,6 +38,9 @@ namespace Login.Models
                 }
             }
         }
+
+        [JsonProperty("provCode")]
+        public string ProvinceCode { get; set; } = string.Empty;
 
         #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;

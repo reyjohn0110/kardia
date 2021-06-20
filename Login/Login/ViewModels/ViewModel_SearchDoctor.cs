@@ -16,6 +16,7 @@ namespace Login.ViewModels
     public class ViewModel_SearchDoctor : ViewModelBase
     {
         #region vars
+        string _baseAPIServer = "https://api.clairemontferrond.tech/kardia/read.php";
         // backer lists
         // where you will store the records from the API server
         List<Model_Location> _locationBacker = new List<Model_Location>();
@@ -149,6 +150,32 @@ namespace Login.ViewModels
         public ViewModel_SearchDoctor()
         {
             InitCommands();
+
+            // dummy data
+            this.Doctors.Clear();
+            this.Doctors.Add(new Model_DoctorData()
+            {
+                FirstName = "Firstname",
+                LastName = "Lastname",
+                Title = "Title",
+                HospitalClinic = "Hospital Clinic",
+                City = "City",
+                Province = "Province",
+                Specialization = "Specialization",
+                Schedule = "Schedule"
+            });
+
+            this.Doctors.Add(new Model_DoctorData()
+            {
+                FirstName = "Firstname",
+                LastName = "Lastname",
+                Title = "Title",
+                HospitalClinic = "Hospital Clinic",
+                City = "City",
+                Province = "Province",
+                Specialization = "Specialization",
+                Schedule = "Schedule"
+            });
         }
         #endregion
 
@@ -166,15 +193,19 @@ namespace Login.ViewModels
                 HttpClient client4 = new HttpClient();
 
                 var postData4 = new List<KeyValuePair<string, string>>();
-                string query4 = "SELECT a.id,a.first_name,a.last_name FROM doctors a LEFT JOIN doctor_specialization b ON a.id = b.s_id";
-                postData4.Add(new KeyValuePair<string, string>("query", query4));
+                //string query4 = "SELECT a.id,a.first_name,a.last_name FROM doctors a LEFT JOIN doctor_specialization b ON a.id = b.s_id";
+                string query = "SELECT d.id, d.first_name, d.last_name, d.title, f.hospital_clinic, c.citymunDesc, p.provDesc, s.name as specialization, df.schedule FROM `doctors` d, `doctor_facilities` df, `facilities` f, `refcitymun` c, `refprovince` p, `doctor_specialization` ds, `specialization` s WHERE df.d_id = d.id and f.city = c.id and ds.d_id = d.id and ds.s_id = s.id and c.provCode=p.provCode ";
+                query += $" and s.id={this.SelectedSpecialization.Id}";
+                query += $" and c.id={this.SelectedLocation.Id}";
+                query += " order by d.first_name";
+                postData4.Add(new KeyValuePair<string, string>("query", query));
                 postData4.Add(new KeyValuePair<string, string>("apikey", "clair3m0ntf3rr0nd!"));
 
                 var content4 = new FormUrlEncodedContent(postData4);
 
-                client4.BaseAddress = new Uri("http://api.clairemontferrond.tech/kardia/read.php");
+                client4.BaseAddress = new Uri(_baseAPIServer);
 
-                var response4 = await client4.PostAsync("http://api.clairemontferrond.tech/kardia/read.php", content4); //change content to null if no postdata to be post
+                var response4 = await client4.PostAsync(_baseAPIServer, content4); //change content to null if no postdata to be post
                 var result4 = response4.Content.ReadAsStringAsync().Result;
 
                 string specialization = "";
@@ -251,22 +282,24 @@ namespace Login.ViewModels
                 HttpClient client = new HttpClient();
 
                 var postData = new List<KeyValuePair<string, string>>();
-                string query = "SELECT refcitymun.citymunCode , refcitymun.citymunDesc,refprovince.provDesc, refprovince.provCode FROM " +
-                    "refcitymun LEFT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' OR refprovince.provDesc " +
-                    "LIKE '%a%' OR refcitymun.citymunCode LIKE '%a%' OR refcitymun.citymunDesc LIKE '%a%'" +
-                    "UNION SELECT refcitymun.citymunCode , refcitymun.citymunDesc,refprovince.provDesc, refprovince.provCode " +
-                    "FROM refcitymun RIGHT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' " +
-                    "OR refprovince.provDesc LIKE '%a%' OR refcitymun.citymunCode " +
-                    "LIKE '%a%' OR refcitymun.citymunDesc LIKE '&a%' ORDER BY citymunDesc ASC";
+                //string query = "SELECT refcitymun.citymunCode, refcitymun.citymunDesc, refprovince.provDesc, refprovince.provCode FROM " +
+                //    "refcitymun LEFT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' OR refprovince.provDesc " +
+                //    "LIKE '%a%' OR refcitymun.citymunCode LIKE '%a%' OR refcitymun.citymunDesc LIKE '%a%'" +
+                //    "UNION SELECT refcitymun.citymunCode , refcitymun.citymunDesc,refprovince.provDesc, refprovince.provCode " +
+                //    "FROM refcitymun RIGHT JOIN refprovince ON refcitymun.provCode = refprovince.provCode WHERE refcitymun.provCode LIKE '%a%' " +
+                //    "OR refprovince.provDesc LIKE '%a%' OR refcitymun.citymunCode " +
+                //    "LIKE '%a%' OR refcitymun.citymunDesc LIKE '&a%' ORDER BY citymunDesc ASC";
+
+                string query = "SELECT c.id, c.citymunDesc, p.provCode, p.provDesc  from `refcitymun` c, `refprovince` p where c.provCode=p.provCode order by c.citymunDesc";
 
                 postData.Add(new KeyValuePair<string, string>("query", query));
                 postData.Add(new KeyValuePair<string, string>("apikey", "clair3m0ntf3rr0nd!"));
 
                 var content = new FormUrlEncodedContent(postData);
 
-                client.BaseAddress = new Uri("http://api.clairemontferrond.tech/kardia/read.php");
+                client.BaseAddress = new Uri(_baseAPIServer);
 
-                var response = await client.PostAsync("http://api.clairemontferrond.tech/kardia/read.php", content); //change content to null if no postdata to be post
+                var response = await client.PostAsync(_baseAPIServer, content); //change content to null if no postdata to be post
                 var result = response.Content.ReadAsStringAsync().Result;
 
                 if (result == "Invalid")
@@ -331,9 +364,9 @@ namespace Login.ViewModels
 
                 var content1 = new FormUrlEncodedContent(postData1);
 
-                client1.BaseAddress = new Uri("http://api.clairemontferrond.tech/kardia/read.php");
+                client1.BaseAddress = new Uri(_baseAPIServer);
 
-                var response1 = await client1.PostAsync("http://api.clairemontferrond.tech/kardia/read.php", content1); //change content to null if no postdata to be post
+                var response1 = await client1.PostAsync(_baseAPIServer, content1); //change content to null if no postdata to be post
                 var result = response1.Content.ReadAsStringAsync().Result;
 
                 if (result == "Invalid")
