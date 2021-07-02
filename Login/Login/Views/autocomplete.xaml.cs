@@ -27,6 +27,11 @@ namespace Login.Views
             // LoadData5();
         }
 
+        private async void Button_Clicked(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new Book());
+        }
+
         /*
         //Search Location
         public async void LoadCities()
@@ -342,6 +347,6 @@ namespace Login.Views
         }
         
 
- */     
+ */
     }
 }

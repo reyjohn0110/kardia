@@ -208,7 +208,6 @@ namespace Login.ViewModels
                 var response4 = await client4.PostAsync(_baseAPIServer, content4); //change content to null if no postdata to be post
                 var result4 = response4.Content.ReadAsStringAsync().Result;
 
-                string specialization = "";
 
                 if (result4 == "Invalid")
                 {

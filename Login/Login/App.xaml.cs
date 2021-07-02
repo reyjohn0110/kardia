@@ -11,10 +11,11 @@ namespace Login
         public App()
         {
             InitializeComponent();
-            
+
             //MainPage = new NavigationPage(new Log1());
             //MainPage = new NavigationPage(new Searchdoctor());
-            MainPage = new NavigationPage(new autocomplete());
+            //MainPage = new NavigationPage(new autocomplete());
+            MainPage = new NavigationPage(new dashboard());
         }
 
         protected override void OnStart()

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage NavigationPage.HasNavigationBar="false"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:shapes="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="Login.Views.Book"
+             BackgroundImageSource="bg5.jpg"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0">
+                <StackLayout>
+                    <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="25" HorizontalOptions="FillAndExpand">
+                        <Label Text="New Appointment" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Start" />
+                    </Frame>
+                </StackLayout>
+
+                <Grid>
+                    <!-- use to make the frame of the UI -->
+                    <StackLayout Margin="15,120,15,0">
+
+                        <Frame BackgroundColor="White"  HasShadow="true" HeightRequest="400" HorizontalOptions="FillAndExpand">
+                            <StackLayout>
+                                <Label HorizontalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="Black" Margin="0,5,0,0">Please Select Date and Time:</Label>
+                                <StackLayout HorizontalOptions="CenterAndExpand" Margin="4">
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="StartAndExpand" Margin="0,15,0,0">
+                                    <Label Text="Select a date of your appointment:" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                                </StackLayout>
+
+                                <!--Code for datepicker -->
+
+                                <StackLayout Margin="0,20,0,0" Padding="0">
+                                    <Frame BorderColor="Black" Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                        <DatePicker MinimumDate="01/01/2021"
+                                      MaximumDate="12/31/2025"
+                                      Date="06/22/2021">
+                                        </DatePicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <!--Code for timepicker -->
+                                <StackLayout Margin="0,25,0,0" HorizontalOptions="StartAndExpand" >
+                                    <Label Text="Select a time for your appointment:" TextColor="Black" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Start"/>
+                                </StackLayout>
+                                <StackLayout Margin="0,25,0,0" Padding="0">
+                                    <Frame BorderColor="Black" Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                        <TimePicker x:Name="_timePicker"
+                                                Time="11:00:00"
+                                                Format="T">
+                                        </TimePicker>
+                                    </Frame>
+                                </StackLayout>
+
+                                <StackLayout Margin="0,30,0,0">
+                                    <Button Text="Book appointment" BackgroundColor="Red" TextColor="White" CornerRadius="10"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

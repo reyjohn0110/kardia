@@ -5,8 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:vm="clr-namespace:Login.ViewModels" 
              mc:Ignorable="d" 
-             x:Class="Login.Views.autocomplete">
-    <!--NavigationPage.HasNavigationBar="False"-->
+             x:Class="Login.Views.autocomplete"
+             NavigationPage.HasNavigationBar="False">
+              
 
     <ContentPage.BindingContext>
         <vm:ViewModel_SearchDoctor />
@@ -118,7 +119,7 @@
                                                         </Label.FormattedText>
                                                     </Label>
 
-                                                    <Button Text="Book" BackgroundColor="Red" Margin="0,20,0,0" TextColor="White" />
+                                                    <Button Text="Book" Clicked="Button_Clicked" BackgroundColor="Red" Margin="0,20,0,0" TextColor="White" />
                                                 </StackLayout>
                                             </Grid>
                                         </Grid>
