@@ -24,7 +24,7 @@
                             </StackLayout>
 
                             <StackLayout Margin="0,25,0,0" Padding="0">
-                                <Button Text="Manage Appointment" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "290" HorizontalOptions="Center" HeightRequest="90" Image="timemanagement.png"/>
+                                <Button Text="Manage Appointment" Clicked="Button_Clicked_1" BackgroundColor="Red" TextColor="White" FontAttributes="Bold" CornerRadius="10" WidthRequest = "290" HorizontalOptions="Center" HeightRequest="90" Image="timemanagement.png"/>
                             </StackLayout>
 
                         </StackLayout>
